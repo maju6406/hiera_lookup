@@ -15,6 +15,8 @@ Puppet.initialize_settings
 
 def hiera_lookup(key, environment, node, explain)
 
+  puts "#{key}, #{environment}, #{node}, #{explain}"
+
   unless explain == 'no'
     explain = ' --explain '
   end
@@ -31,6 +33,8 @@ def hiera_lookup(key, environment, node, explain)
     environment = " --environment #{environment} "
   end
   cmd = ['/opt/puppetlabs/puppet/bin/puppet', 'lookup', key, environment, node, explain]
+
+  puts cmd
 
   stdout, stderr, status = Open3.capture3( *cmd)
   {
