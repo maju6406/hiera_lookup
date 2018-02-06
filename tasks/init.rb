@@ -1,7 +1,6 @@
 #!/opt/puppetlabs/puppet/bin/ruby
 #
-# Puppet Task to perform puppet cert signing
-# This can only be run against the Puppet Master.
+# Puppet Task to perform hiera lookups
 #
 # Parameters:
 # keys: A comma-separated list of keys to look up
@@ -13,11 +12,6 @@ require 'puppet'
 require 'open3'
 
 Puppet.initialize_settings
-
-unless Puppet[:server] == Puppet[:certname]
-  puts 'This task can only be run against the Master (of Masters)'
-  exit 1
-end
 
 def hiera_lookup(key, environment, node, explain)
 

@@ -1,7 +1,7 @@
 {
     "puppet_task_version": 1,
     "supports_noop": false,
-    "description": "A task to perform puppet cert signing",
+    "description": "A task to perform to perform hiera lookups",
     "parameters": {
         "keys": {
             "description": "A comma-separated list of keys to look up",

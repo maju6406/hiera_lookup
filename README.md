@@ -59,5 +59,3 @@ bolt task run lookup keys=foo,bar,baz --nodes master.corp.net
 * `environment`: Environment to use for look up (optional)
 * `certname`: Node to use for look up (optional)
 * `explain`: Enable explain (optional). Defaults to yes.
-
-NOTE: You can not specify `all` or `--all` in the `agent_certnames` parameter. Attempts to sign the Puppet master cert will be ignored.
