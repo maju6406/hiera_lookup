@@ -59,6 +59,6 @@ keys.each do |key|
   else
     "There was a problem looking up #{key}: #{output[:stderr]}"
   end
-  puts
+  puts '-------------------------------------------'
 end
 
