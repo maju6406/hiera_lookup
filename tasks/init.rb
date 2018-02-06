@@ -31,7 +31,10 @@ def hiera_lookup(key, environment, node, explain)
     cmd << "#{environment}"
   end
 
-  puts cmd.join(" ")
+  cmd << "--render-as"
+  cmd << "yaml"
+
+#  puts cmd.join(" ")
 
   stdout, stderr, status = Open3.capture3( *cmd)
   {
@@ -50,8 +53,7 @@ explain = params['explain']
 
 keys.each do |key|
   output = hiera_lookup(key, environment, node, explain)
-  puts "------------------------"  
-  puts "#{key}"  
+  puts "key: #{key}"  
   puts "-----------"  
   if output[:exit_code].zero?
     puts "#{output[:stdout]}"
