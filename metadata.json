@@ -4,9 +4,9 @@
     "author": "Abir Majumdar",
     "summary": "This task performs a hiera lookup",
     "license": "Apache-2.0",
-    "source": "https://github.com/maju6406/lookup",
-    "project_page": "https://github.com/maju6406/lookup",
-    "issues_url": "https://github.com/maju6406/lookup/issues",
+    "source": "https://github.com/maju6406/hiera_lookup",
+    "project_page": "https://github.com/maju6406/hiera_lookup",
+    "issues_url": "https://github.com/maju6406/hiera_lookup/issues",
     "dependencies": [
 
     ],
