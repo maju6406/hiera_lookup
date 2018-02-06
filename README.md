@@ -1,11 +1,11 @@
-[![Build Status](https://travis-ci.org/maju6406/lookup.svg?branch=master)](https://travis-ci.org/maju6406/lookup)
-[![Puppet Forge](https://img.shields.io/puppetforge/v/beersy/lookup.svg)](https://forge.puppetlabs.com/beersy/lookup)
+[![Build Status](https://travis-ci.org/maju6406/hiera_lookup.svg?branch=master)](https://travis-ci.org/maju6406/hiera_lookup)
+[![Puppet Forge](https://img.shields.io/puppetforge/v/beersy/hiera_lookup.svg)](https://forge.puppetlabs.com/beersy/hiera_lookup)
 
 # Puppet Hiera Lookup Task
 
-This module adds a Task for perform puppet cert signing.
+This module adds a Task for performing hiera lookups.
 
-For Puppet Enterprise users, this means you can allow users or admins to sign nodes without giving them SSH access to your Puppet master! The ability to run this task remotely or via the Console is gated and tracked by the [RBAC system](https://puppet.com/docs/pe/2017.3/rbac/managing_access.html) built in to PE.
+For Puppet Enterprise users, this means you can allow users or admins to perform hiera lookups without giving them SSH access to your Puppet master! The ability to run this task remotely or via the Console is gated and tracked by the [RBAC system](https://puppet.com/docs/pe/2017.3/rbac/managing_access.html) built in to PE.
 
 ## Requirements
 
@@ -21,7 +21,7 @@ This module is compatible with Puppet Enterprise and Puppet Bolt.
 
 With Puppet Enterprise 2017.3 or higher, you can run this task [from the console](https://puppet.com/docs/pe/2017.3/orchestrator/running_tasks_in_the_console.html) or the command line.
 
-Here's a command line example where we are signing the `foo`, `bar`, and `baz` nodes from the Puppet master, `master.corp.net`:
+Here's a command line example where we are looking up `ntp::servers ` from the Puppet master, `master.corp.net`:
 
 ```shell
 [abir@workstation]$ puppet task run hiera_lookup keys=ntp::servers -n master.corp.net
