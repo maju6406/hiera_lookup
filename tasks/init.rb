@@ -54,12 +54,11 @@ explain = params['explain']
 keys.each do |key|
   output = hiera_lookup(key, environment, node, explain)
   puts "key: #{key}"  
-  puts "-----------"  
   if output[:exit_code].zero?
     puts "#{output[:stdout]}"
   else
     "There was a problem looking up #{key}: #{output[:stderr]}"
   end
-  puts "------------------------"  
+  puts
 end
 
