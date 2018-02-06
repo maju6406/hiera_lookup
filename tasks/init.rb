@@ -17,8 +17,10 @@ def hiera_lookup(key, environment, node, explain)
 
   puts "#{key}, #{environment}, #{node}, #{explain}"
 
-  unless explain == 'no'
-    explain = ' --explain '
+  if explain == 'no'
+    explain = ''
+  else
+    explain = ' --explain ' 
   end
 
   if node.nil?
