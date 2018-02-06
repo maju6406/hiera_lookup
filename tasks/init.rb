@@ -56,14 +56,9 @@ keys.each do |key|
   puts "key: #{key}"  
   puts "-----------"  
   if output[:exit_code].zero?
-    if output[:stdout].starts_with?('---')
-      stdout = output[:stdout][3..-1]
-    else
-      stdout = output[:stdout]
-    end
-    puts "#{stdout}"
+    puts "#{output[:stdout]}"
   else
-    "There was an problem looking up #{key}: #{output[:stderr]}"
+    "There was a problem looking up #{key}: #{output[:stderr]}"
   end
   puts "------------------------"  
 end
