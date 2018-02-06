@@ -15,26 +15,24 @@ Puppet.initialize_settings
 
 def hiera_lookup(key, environment, node, explain)
 
-  puts "#{key}, #{environment}, #{node}, #{explain}"
-
   if explain == 'no'
     explain = ''
   else
-    explain = ' --explain ' 
+    explain = '--explain' 
   end
 
   if node.nil?
     node = ''
   else  
-    node = " --node #{node} "
+    node = "--node #{node}"
   end
 
   if environment.nil?
     environment = ''
   else  
-    environment = " --environment #{environment} "
+    environment = "--environment #{environment}"
   end
-  cmd = ['/opt/puppetlabs/puppet/bin/puppet', 'lookup', key, environment, node, explain]
+  cmd = ['/opt/puppetlabs/puppet/bin/puppet', 'lookup', key, explain, environment, node ]
 
   puts cmd.join(" ")
 
