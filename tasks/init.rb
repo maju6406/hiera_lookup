@@ -32,8 +32,6 @@ def hiera_lookup(key, environment, node, explain)
   end
   cmd = ['/opt/puppetlabs/puppet/bin/puppet', 'lookup', '--debug', key, environment, node, explain]
 
-  puts cmd
-  puts cmd.to_s
   stdout, stderr, status = Open3.capture3( *cmd)
   {
     stdout: stdout.strip,
@@ -54,9 +52,8 @@ keys.each do |key|
   results[key] = {}
 
   output = hiera_lookup(key, environment, node, explain)
-  puts output
   results[key][:result] = if output[:exit_code].zero?
-                                 "#{output[:out]}"
+                                 "#{output[:stdout]}"
                                else
                                  "There was an looking up #{key}: #{output[:stderr]}"
                                end
