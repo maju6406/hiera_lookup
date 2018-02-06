@@ -32,7 +32,7 @@ def hiera_lookup(key, environment, node, explain)
   end
 
 
-  cmd = ['/opt/puppetlabs/puppet/bin/puppet', 'lookup', key, environment, node, explain]
+  cmd = ['/opt/puppetlabs/puppet/bin/puppet', 'lookup', '--debug', key, environment, node, explain]
   stdout, stderr, status = Open3.capture3( *cmd)
   {
     stdout: stdout.strip,
