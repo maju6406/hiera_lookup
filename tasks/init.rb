@@ -17,7 +17,7 @@ def hiera_lookup(key, environment, node, explain)
 
   cmd = ['/opt/puppetlabs/puppet/bin/puppet', 'lookup', key]
 
-  unless explain == 'no'
+  if explain == 'yes'
     cmd << '--explain'
   end
 
@@ -31,8 +31,8 @@ def hiera_lookup(key, environment, node, explain)
     cmd << "#{environment}"
   end
 
-  cmd << "--render-as"
-  cmd << "yaml"
+#  cmd << "--render-as"
+#  cmd << "yaml"
 
 #  puts cmd.join(" ")
 
@@ -56,9 +56,14 @@ keys.each do |key|
   puts "key: #{key}"  
   puts "-----------"  
   if output[:exit_code].zero?
-    puts "#{output[:stdout]}"
+    if output[:stdout].starts_with?('---')
+      stdout = output[:stdout][3..-1]
+    else
+      stdout = output[:stdout]
+    end
+    puts "#{stdout}"
   else
-    "There was an looking up #{key}: #{output[:stderr]}"
+    "There was an problem looking up #{key}: #{output[:stderr]}"
   end
   puts "------------------------"  
 end
