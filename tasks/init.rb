@@ -54,6 +54,7 @@ keys.each do |key|
   results[key] = {}
 
   output = hiera_lookup(key, environment, node, explain)
+  puts output
   results[key][:result] = if output[:exit_code].zero?
                                  "#{output[:out]}"
                                else
