@@ -19,12 +19,16 @@ def hiera_lookup(key, environment, node, explain)
     explain = ' --explain '
   end
 
-  unless node.to_s.empty?
-    explain = " --node #{node} "
+  if node.nil?
+    node = ''
+  else  
+    node = " --node #{node} "
   end
 
-  unless environment.to_s.empty?
-    explain = " --environment #{environment} "
+  if environment.nil?
+    environment = ''
+  else  
+    environment = " --environment #{environment} "
   end
 
 
