@@ -1,0 +1,23 @@
+{
+    "puppet_task_version": 1,
+    "supports_noop": false,
+    "description": "A task to perform puppet cert signing",
+    "parameters": {
+        "keys": {
+            "description": "A comma-separated list of keys to look up",
+            "type": "Pattern[/^([A-Za-z0-9._-]+,?)+$/]"
+        },
+        "environment": {
+            "description": "Environment to use for look up",
+            "type": "Optional[Pattern[/^([A-Za-z0-9._-]+,?)+$/]]"
+        },
+        "certname": {
+            "description": "Node to use for look up",
+            "type": "Optional[Pattern[/^([A-Za-z0-9._-]+,?)+$/]]"
+        },
+        "explain": {
+            "description": "Enable explain. Defaults to yes.",
+            "type": "Optional[Enum[yes, no]]"
+        }
+    }
+}
