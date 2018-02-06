@@ -40,7 +40,6 @@ def hiera_lookup(key, environment, node, explain)
   }
 end
 
-results = {}
 params = JSON.parse(STDIN.read)
 
 keys = params['keys'].split(',')
@@ -49,14 +48,15 @@ environment = params['environment']
 explain = params['explain']
 
 keys.each do |key|
-  results[key] = {}
-
   output = hiera_lookup(key, environment, node, explain)
-  results[key][:result] = if output[:exit_code].zero?
-                                 "#{output[:stdout]}"
-                               else
-                                 "There was an looking up #{key}: #{output[:stderr]}"
-                               end
+  puts "------------------------"  
+  puts "#{key}"  
+  puts "-----------"  
+  if output[:exit_code].zero?
+    puts "#{output[:stdout]}"
+  else
+    "There was an looking up #{key}: #{output[:stderr]}"
+  end
+  puts "------------------------"  
 end
 
-puts results.to_json
