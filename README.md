@@ -24,25 +24,24 @@ With Puppet Enterprise 2017.3 or higher, you can run this task [from the console
 Here's a command line example where we are signing the `foo`, `bar`, and `baz` nodes from the Puppet master, `master.corp.net`:
 
 ```shell
-[abir@workstation]$ puppet task run lookup keys=foo,bar,baz -n master.corp.net
-
+[abir@workstation]$ puppet task run hiera_lookup keys=ntp::servers -n master.corp.net
 Starting job ...
-New job ID: 24
+New job ID: 346
 Nodes: 1
 
 Started on master.corp.net ...
 Finished on node master.corp.net
-  bar :
-    result : Cert successfully signed for bar
-
-  baz :
-    result : Cert successfully signed for baz
-
-  foo :
-    result : Cert successfully signed for foo
+  STDOUT:
+    key: ntp::servers
+    ---
+    - 0.us.pool.ntp.org
+    - 1.us.pool.ntp.org
+    - 2.us.pool.ntp.org
+    - 3.us.pool.ntp.org
+    -------------------------------------------
 
 Job completed. 1/1 nodes succeeded.
-Duration: 6 sec
+Duration: 10 sec
 ```
 
 ### Bolt
@@ -50,7 +49,7 @@ Duration: 6 sec
 With [Bolt](https://puppet.com/docs/bolt/0.x/running_tasks_and_plans_with_bolt.html), you can run this task on the command line like so:
 
 ```shell
-bolt task run lookup keys=foo,bar,baz --nodes master.corp.net
+bolt task run hiera_lookup keys=ntp::servers --nodes master.corp.net
 ```
 
 ## Parameters
@@ -58,4 +57,4 @@ bolt task run lookup keys=foo,bar,baz --nodes master.corp.net
 * `keys`: A comma-separated list of keys to look up
 * `environment`: Environment to use for look up (optional)
 * `certname`: Node to use for look up (optional)
-* `explain`: Enable explain (optional). Defaults to yes.
+* `explain`: Enable explain (optional). Defaults to no.

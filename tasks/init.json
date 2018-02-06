@@ -16,7 +16,7 @@
             "type": "Optional[Pattern[/^([A-Za-z0-9._-]+,?)+$/]]"
         },
         "explain": {
-            "description": "Enable explain. Defaults to yes.",
+            "description": "Enable explain. Defaults to no.",
             "type": "Optional[Enum[yes, no]]"
         }
     }
