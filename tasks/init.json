@@ -5,7 +5,7 @@
     "parameters": {
         "keys": {
             "description": "A comma-separated list of keys to look up",
-            "type": "Pattern[/^([A-Za-z0-9._-]+,?)+$/]"
+            "type": "Pattern[/^([A-Za-z0-9.:_-]+,?)+$/]"
         },
         "environment": {
             "description": "Environment to use for look up",
